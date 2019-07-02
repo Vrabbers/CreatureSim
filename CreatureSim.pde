@@ -10,8 +10,8 @@ void setup() {
   if (nSeed != -1) {
     noiseSeed(nSeed);
   }
-  testMap = new Map(27,27);
-  testMap.Generate(0.1,4);
+  testMap = new Map(27, 27);
+  testMap.Generate(0.1, 4);
   frameRate(30);
   surface.setResizable(true);
 }

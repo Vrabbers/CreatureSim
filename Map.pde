@@ -9,30 +9,35 @@ class Map {
   }
   void Generate(float roughness, float waterLevel) {
     waterLvl = waterLevel;
+    boolean hasAnyWater = false;
     for (int y = 0; y < mapHeight; y++) {
       for (int x = 0; x < mapWidth; x++) {
         float currentNoise = noise(x*roughness, y*roughness)*10;
         tileMap[x][y] = new Tile(currentNoise, currentNoise<waterLevel);
-        fill(map(currentNoise, 0, 10, 0, 255));
+        hasAnyWater = hasAnyWater || currentNoise<waterLevel; //might do something a little more comlicated here later on
       }
-      
+    }
+    if (!hasAnyWater) {
+      println("trying again, the map has no water");
+      noiseSeed((long)random(0, 1000000));
+      Generate(roughness, waterLevel);
     }
   }
-  void TestRender(){
+  void TestRender() {
     float scaling = (float)height/mapHeight;
     noStroke();
     pushMatrix();
     for (int y = 0; y < mapHeight; y++) {
       for (int x = 0; x < mapWidth; x++) {
-        if(!tileMap[x][y].isWater){
+        if (!tileMap[x][y].isWater) {
           fill(120, map(tileMap[x][y].theight, waterLvl, 8, 100, 0), map(tileMap[x][y].theight, waterLvl, 8, 80, 100));
-        }else{
+        } else {
           fill(240, 100, 50);
         }
-        rect(0,0,scaling,scaling);
+        rect(0, 0, scaling, scaling);
         translate(scaling, 0 );
       }
-      translate(-(scaling*mapWidth),scaling);
+      translate(-(scaling*mapWidth), scaling);
     }
     popMatrix();
   }
