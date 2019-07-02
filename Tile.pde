@@ -26,15 +26,26 @@ class Tile {
   }
 
   void Tick() {
-    if(canHaveFood & !hasFood){
+    if (canHaveFood & !hasFood) {
       timerForFood--;
-      if (timerForFood == -1){
+      if (timerForFood == -1) {
         hasFood = true;
       }
-
     }
-    println(canHaveFood);
-    println(hasFood);
-    println(timerForFood);  
+    //println(canHaveFood);
+    //println(hasFood);
+    //println(timerForFood);
+  }
+  boolean EatMe() {
+    if (hasFood) {
+      timerForFood = (int)map(fertility, 0, 10, 1, 50);
+      hasFood = false;
+      //println(canHaveFood);
+      //println(hasFood);
+      //println(timerForFood); //who needs debuggers when you can println
+      return true;
+    } else {
+      return false;
+    }
   }
 }
