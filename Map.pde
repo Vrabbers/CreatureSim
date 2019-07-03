@@ -39,12 +39,12 @@ class Map {
         if (!tileMap[x][y].isWater) {
           fill(120, map(tileMap[x][y].theight, waterLvl, 8, 100, 0), map(tileMap[x][y].theight, waterLvl, 8, 80, 100));
         } else {
-          fill(240, 100, 50);
+          fill(240, 100, map(tileMap[x][y].theight, waterLvl, 0, 50, 20));
         }
         rect(0, 0, scaling, scaling);
         if (tileMap[x][y].hasFood) {
           fill(138, 100, 55);
-          ellipse(scaling/2, scaling/2, scaling*0.8, scaling*0.8);
+          ellipse(scaling/2, scaling/2, scaling*0.6, scaling*0.6);
         }
         translate(scaling, 0 );
       }
