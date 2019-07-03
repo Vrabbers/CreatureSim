@@ -2,7 +2,8 @@ long rSeed = -1; //if -1 the pseudorandom seed will be set automagically,else, u
 long nSeed = -1; //ditto
 float howMuchFood = 5.3; //how much food is there. 5 is very low, while 6 is already a lot. default 5.3
 boolean shouldTick = false; //timer so we tick only every other frame
-Map testMap;
+ArrayList<Creature> creatures = new ArrayList<Creature>();
+Map map;
 void setup() {
   colorMode(HSB, 360, 100, 100);
   size(960, 540, P2D);
@@ -12,8 +13,8 @@ void setup() {
   if (nSeed != -1) {
     noiseSeed(nSeed);
   }
-  testMap = new Map(27);
-  testMap.Generate(0.1, 4);
+  map = new Map(27);
+  map.Generate(0.1, 4);
   frameRate(30);
   surface.setResizable(true);
 }
@@ -25,16 +26,16 @@ void draw() {
   textAlign(RIGHT, TOP);
   text(str(Math.round(frameRate)) + "FPS", width-2, 2);
   if (shouldTick) {
-    testMap.TickAll();
+    map.TickAll();
   } else {
     shouldTick = true;
   }
-  testMap.Render();
+  map.Render();
 }
 
 void mouseClicked() {
   try {
-    println(testMap.tileMap[(int)(mouseX/testMap.scaling)][(int)(mouseY/testMap.scaling)].EatMe());
+    println(map.tileMap[(int)(mouseX/map.scaling)][(int)(mouseY/map.scaling)].EatMe());
   } 
   catch(ArrayIndexOutOfBoundsException e) {
     println(e);
