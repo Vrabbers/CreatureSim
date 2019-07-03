@@ -1,5 +1,7 @@
-int rSeed = -1; //if -1 the pseudorandom seed will be set automagically,else, use the seed here
-int nSeed = -1; //ditto
+long rSeed = -1; //if -1 the pseudorandom seed will be set automagically,else, use the seed here
+long nSeed = -1; //ditto
+float howMuchFood = 5.25; //how much food is there. 5 is very low, while 6 is already a lot. default 5.25
+boolean shouldTick = false; //timer so we tick only every other frame
 Map testMap;
 void setup() {
   colorMode(HSB, 360, 100, 100);
@@ -17,10 +19,15 @@ void setup() {
 }
 
 void draw() {
-  background(360);
+  background(219, 58, 93);
   fill(0);
   rect(0, 0, height, height);
   textAlign(RIGHT, TOP);
   text(str(Math.round(frameRate)) + "FPS", width-2, 2);
+  if (shouldTick) {
+    testMap.TickAll();
+  } else {
+    shouldTick = true;
+  }
   testMap.TestRender();
 }

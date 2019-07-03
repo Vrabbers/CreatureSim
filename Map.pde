@@ -23,6 +23,13 @@ class Map {
       Generate(roughness, waterLevel);
     }
   }
+  void TickAll() {
+    for (int y = 0; y < mapHeight; y++) {
+      for (int x = 0; x < mapWidth; x++) {
+        tileMap[x][y].Tick();
+      }
+    }
+  }
   void TestRender() {
     float scaling = (float)height/mapHeight;
     noStroke();
@@ -35,6 +42,10 @@ class Map {
           fill(240, 100, 50);
         }
         rect(0, 0, scaling, scaling);
+        if (tileMap[x][y].hasFood) {
+          fill(138, 100, 55);
+          ellipse(scaling/2, scaling/2, scaling*0.8, scaling*0.8);
+        }
         translate(scaling, 0 );
       }
       translate(-(scaling*mapWidth), scaling);

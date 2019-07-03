@@ -15,9 +15,9 @@ class Tile {
       canHaveFood = false;
       timerForFood = -1;
     } else {
-      if (random(0, 10) < fertility) {
+      if (random(0, howMuchFood) > theight) {
         canHaveFood = true;
-        timerForFood = (int)map(fertility, 0, 10, 1, 50);
+        timerForFood = (int)map(theight, 0, 10, 1, 50);
       } else {
         canHaveFood = false;
         timerForFood = -1;
