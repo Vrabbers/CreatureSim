@@ -3,10 +3,10 @@ class Map {
   int mapWidth, mapHeight;
   float waterLvl;
   float scaling = (float)height/mapHeight;
-  Map(int wid, int hei) {
-    tileMap = new Tile[wid][hei];
-    mapWidth = wid; 
-    mapHeight = hei;
+  Map(int size) {
+    tileMap = new Tile[size][size];
+    mapWidth = size; 
+    mapHeight = size;
   }
   void Generate(float roughness, float waterLevel) {
     waterLvl = waterLevel;
@@ -40,7 +40,7 @@ class Map {
         if (!tileMap[x][y].isWater) {
           fill(120, map(tileMap[x][y].theight, waterLvl, 8, 100, 0), map(tileMap[x][y].theight, waterLvl, 8, 80, 100));
         } else {
-          fill(240, 100, map(tileMap[x][y].theight, waterLvl, 0, 80t, 20));
+          fill(240, 100, map(tileMap[x][y].theight, waterLvl, 0, 80, 20));
         }
         rect(0, 0, scaling, scaling);
         if (tileMap[x][y].hasFood) {
