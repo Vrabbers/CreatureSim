@@ -9,6 +9,7 @@ class Creature {
   float hunger;
   float thirst;
   float[][] vision;
+  NeuralNet neuralNet;
   Creature() {
   }
 }
