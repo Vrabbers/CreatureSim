@@ -2,6 +2,7 @@ class Map {
   Tile[][] tileMap;
   int mapWidth, mapHeight;
   float waterLvl;
+  float scaling = (float)height/mapHeight;
   Map(int wid, int hei) {
     tileMap = new Tile[wid][hei];
     mapWidth = wid; 
@@ -30,8 +31,8 @@ class Map {
       }
     }
   }
-  void TestRender() {
-    float scaling = (float)height/mapHeight;
+  void Render() {
+    scaling = (float)height/mapHeight;
     noStroke();
     pushMatrix();
     for (int y = 0; y < mapHeight; y++) {
@@ -39,7 +40,7 @@ class Map {
         if (!tileMap[x][y].isWater) {
           fill(120, map(tileMap[x][y].theight, waterLvl, 8, 100, 0), map(tileMap[x][y].theight, waterLvl, 8, 80, 100));
         } else {
-          fill(240, 100, map(tileMap[x][y].theight, waterLvl, 0, 50, 20));
+          fill(240, 100, map(tileMap[x][y].theight, waterLvl, 0, 80t, 20));
         }
         rect(0, 0, scaling, scaling);
         if (tileMap[x][y].hasFood) {

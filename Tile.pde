@@ -17,7 +17,7 @@ class Tile {
     } else {
       if (random(0, howMuchFood) > theight) {
         canHaveFood = true;
-        timerForFood = (int)map(theight, 0, 10, 1, 50);
+        timerForFood = 10;
       } else {
         canHaveFood = false;
         timerForFood = -1;
@@ -38,7 +38,7 @@ class Tile {
   }
   boolean EatMe() {
     if (hasFood) {
-      timerForFood = (int)map(fertility, 0, 10, 1, 50);
+      timerForFood = (int)map(theight, 0, 10, 30, 300);
       hasFood = false;
       //println(canHaveFood);
       //println(hasFood);
