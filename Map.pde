@@ -20,7 +20,7 @@ class Map {
     }
     if (!hasAnyWater) {
       println("trying again, the map has no water");
-      noiseSeed((long)random(0, 1000000));
+      noiseSeed(hour()+day()+second()+minute()+millis());
       Generate(roughness, waterLevel);
     }
   }
