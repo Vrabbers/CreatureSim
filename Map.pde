@@ -40,7 +40,7 @@ class Map {
         if (!tileMap[x][y].isWater) {
           fill(90, map(tileMap[x][y].theight, waterLvl, 8, 100, 0), map(tileMap[x][y].theight, waterLvl, 8, 80, 100));
         } else {
-          fill(215, 100, map(tileMap[x][y].theight, waterLvl, 0, 80, 20));
+          fill(215, 100, map(tileMap[x][y].theight, waterLvl, 0, 80, 50));
         }
         rect(0, 0, scaling, scaling);
         if (tileMap[x][y].hasFood) {
