@@ -49,7 +49,9 @@ class Map {
         }
         translate(scaling, 0 );
       }
-      translate(-(scaling*mapWidth), scaling);
+      popMatrix();
+      translate(0, scaling);
+      pushMatrix();
     }
     popMatrix();
   }
