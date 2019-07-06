@@ -14,19 +14,20 @@ class NeuralNet {
     }
     for (int i = 0; i < hiddenSize; i++) {
       ArrayList<Link> tempLinks = new ArrayList<Link>(amtLinks);
-      for (int l = 0; i < amtLinks; l++) {
+      for (int l = 0; l < amtLinks; l++) {
         tempLinks.add(new Link(Math.round(random(0, inputSize-1)), random(-3, 3))); //very ugly line of code
       }
       hidden[i] = new Neuron(HIDDEN, tempLinks);
     }
     for (int i = 0; i < outSize; i++) { //partying like its 1824 with 100021934 for loops
       ArrayList<Link> tempLinks = new ArrayList<Link>(amtLinks);
-      for (int l = 0; i < amtLinks; l++) {
+      for (int l = 0; l < amtLinks; l++) {
         tempLinks.add(new Link(Math.round(random(0, inputSize-1)), random(-3, 3))); //very ugly line of code
       }
-      hidden[i] = new Neuron(OUTPUT, tempLinks);
+      outputs[i] = new Neuron(OUTPUT, tempLinks);
     }
     //lets hope all this works when i come around to testing this lma
+    print("done");
   }
 
   NeuralNet(NeuralNet previousNet, int mutate) {
@@ -60,7 +61,7 @@ class NeuralNet {
           }
           hidden[chosenIndex] = chosen; 
           break;
-          
+
         case 2:
           chosenIndex = Math.round(random(0, outputs.length-1));
           chosen = outputs[chosenIndex];

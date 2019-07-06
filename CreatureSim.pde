@@ -1,9 +1,11 @@
+
+
 long rSeed = -1; //if -1 the pseudorandom seed will be set automagically,else, use the seed here
 long nSeed = -1; //ditto
 float howMuchFood = 5.3; //how much food is there. 5 is very low, while 6 is already a lot. default 5.3
 boolean shouldTick = false; //timer so we tick only every other frame
 ArrayList<Creature> creatures = new ArrayList<Creature>();
-NeuralNet testNet1 = new NeuralNet(10,10,10,2);
+NeuralNet testNet1 = new NeuralNet(10, 10, 10, 2);
 Map map;
 void setup() {
   colorMode(HSB, 360, 100, 100);
