@@ -5,9 +5,12 @@ long nSeed = -1; //ditto
 float howMuchFood = 5.3; //how much food is there. 5 is very low, while 6 is already a lot. default 5.3
 boolean shouldTick = false; //timer so we tick only every other frame
 ArrayList<Creature> creatures = new ArrayList<Creature>();
-NeuralNet testNet1 = new NeuralNet(10, 10, 10, 2);
+NeuralNet testNet1;
+NeuralNet testNet2;
 Map map;
 void setup() {
+  testNet1 = new NeuralNet(10, 10, 10, 2);
+  testNet2 = new NeuralNet(testNet1, 1);
   colorMode(HSB, 360, 100, 100);
   size(960, 540, P2D);
   if (rSeed != -1) {

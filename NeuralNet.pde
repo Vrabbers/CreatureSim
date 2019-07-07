@@ -37,22 +37,11 @@ class NeuralNet {
     int chosenIndex;
     Neuron chosen;
     if (mutate > 0) {
-      for (int i = 0; i < mutate*4; i++) {
+      for (int i = 0; i < mutate*8; i++) {
         //weak mutations
-        switch (Math.round(random(0, 2))) {
+        switch (floor(random(0, 1))) {
         case 0:
-          chosenIndex = Math.round(random(0, inputs.length-1));
-          chosen = inputs[chosenIndex];
-          if ((int)random(0, 1) == 1) {
-            chosen.links.get((int)random(0, chosen.links.size()-1)).bias += random(-mutate, mutate);  //uglier than that ugly line 18 (and it repeats multiple times kinda)
-          } else {
-            chosen.links.get((int)random(0, chosen.links.size()-1)).linkedTo = Math.round(random(0, inputs.length));
-          }
-          inputs[chosenIndex] = chosen; //and we finish the ugliest code ever only to do it again 2 more times
-          break;
-
-        case 1:
-          chosenIndex = Math.round(random(0, hidden.length-1));
+          chosenIndex = floor(random(0, hidden.length));
           chosen = hidden[chosenIndex];
           if ((int)random(0, 1) == 1) {
             chosen.links.get((int)random(0, chosen.links.size()-1)).bias += random(-mutate, mutate);
@@ -62,8 +51,8 @@ class NeuralNet {
           hidden[chosenIndex] = chosen; 
           break;
 
-        case 2:
-          chosenIndex = Math.round(random(0, outputs.length-1));
+        case 1:
+          chosenIndex = floor(random(0, outputs.length));;
           chosen = outputs[chosenIndex];
           if ((int)random(0, 1) == 1) {
             chosen.links.get((int)random(0, chosen.links.size()-1)).bias += random(-mutate, mutate);
