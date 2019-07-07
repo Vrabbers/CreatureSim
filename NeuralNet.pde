@@ -52,7 +52,7 @@ class NeuralNet {
           break;
 
         case 1:
-          chosenIndex = floor(random(0, outputs.length));;
+          chosenIndex = floor(random(0, outputs.length));
           chosen = outputs[chosenIndex];
           if ((int)random(0, 1) == 1) {
             chosen.links.get((int)random(0, chosen.links.size()-1)).bias += random(-mutate, mutate);
