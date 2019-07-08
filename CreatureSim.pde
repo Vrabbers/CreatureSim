@@ -36,7 +36,10 @@ void draw() {
   } else {
     shouldTick = true;
   }
+  pushMatrix();
   map.Render();
+  popMatrix();
+  rect(2,2,2,2);
 }
 
 void mouseClicked() {
