@@ -2,12 +2,20 @@
 
 long rSeed = -1; //if -1 the pseudorandom seed will be set automagically,else, use the seed here
 long nSeed = -1; //ditto
-float howMuchFood = 5.3; //how much food is there. 5 is very low, while 6 is already a lot. default 5.3
+float howMuchFood = 5.3; //maximum level for food spawnage
 boolean shouldTick = false; //timer so we tick only every other frame
 ArrayList<Creature> creatures = new ArrayList<Creature>();
 NeuralNet testNet1;
 NeuralNet testNet2;
 Map map;
+
+int minVisionHeight = 3;
+int minVisionWidth = 5;
+int maxVisionHeight = 7;
+int maxVisionWidth = 9;
+
+int hiddenNNLayerSize = 20; //just placeholder for now
+int amountOfNNLinks = 2;
 void setup() {
   testNet1 = new NeuralNet(10, 10, 10, 2);
   testNet2 = new NeuralNet(testNet1, 1);
