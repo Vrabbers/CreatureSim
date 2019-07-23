@@ -11,8 +11,9 @@ class Creature {
   float[][] vision;
   int visionHeight; 
   int visionWidth; //these must be odd
+  color creatureColor;
   NeuralNet neuralNet;
-  Creature(int initX, int initY, int initDirection, int gvisionHeight, int gvisionWidth, NeuralNet netToMutate) {
+  Creature(int initX, int initY, int initDirection, int gvisionHeight, int gvisionWidth, NeuralNet netToMutate, color gcolor) {
     xPos = initX;
     yPos = initY;
     direction = initDirection;
@@ -22,7 +23,23 @@ class Creature {
     visionHeight = gvisionHeight;
     visionWidth = gvisionWidth;
     neuralNet = new NeuralNet(netToMutate, 1); //this one is for children
-    //i need to implement mutation here too but rhhehg
+    int colorModify = 0;
+    switch(round(random(0,2))){
+      case 0:
+      colorModify = 0x02;
+      break;
+      case 1:
+      colorModify = 0x0200;
+      break;
+      case 2:
+      colorModify = 0x020000;
+      break;
+    }
+    if(round(random(0,1)) == 1){
+      creatureColor = gcolor + colorModify;
+    }else{
+      creatureColor = gcolor - colorModify;
+    }
   }
   Creature(Map map) {
     int selX;
@@ -46,6 +63,7 @@ class Creature {
     visionHeight = selVH;
     visionWidth = selVW;
     neuralNet = new NeuralNet(20, hiddenNNLayerSize, 10, amountOfNNLinks);
+    creatureColor = round(random(0,0xffffff));    
   }
   void See() {
     for (int w = 0; w < visionWidth; w++) {

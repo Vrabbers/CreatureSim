@@ -47,7 +47,9 @@ void draw() {
   pushMatrix();
   map.Render();
   popMatrix();
-  rect(2,2,2,2);
+  for(Creature c : creatures){
+    
+  }
 }
 
 void mouseClicked() {
