@@ -9,3 +9,5 @@ application.windows64
 application.macosx
 *.tmp
 code/sketch.properties
+.idea/
+out/
